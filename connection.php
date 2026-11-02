@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root"; // sesuaikan
 $pass = "";     // sesuaikan
-$db   = "nama_database_produk"; // TANYAKAN KE MAHASISWA A
+$db   = "db_toko"; // TANYAKAN KE MAHASISWA A
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 if (!$koneksi) {
