@@ -1,13 +1,13 @@
 <?php
 $host = "localhost";
-$user = "root"; // sesuaikan
-$pass = "";     // sesuaikan
-$db   = "db_toko"; // Nama database
+$user = "root";
+$pass = ""; 
+$db   = "nama_database_dari_mahasiswa_A"; // GANTI DENGAN NAMA DB YANG BENAR
 
-// Ubah $koneksi menjadi $conn agar seragam
-$conn = mysqli_connect($host, $user, $pass, $db);
+$koneksi = mysqli_connect($host, $user, $pass, $db);
 
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
+if (!$connection) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
 }
 ?>
+

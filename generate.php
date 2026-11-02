@@ -1,62 +1,24 @@
-<?php
-// Koneksi ke database MySQL (Sesuaikan dengan kredensial XAMPP kamu)
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'nama_database_kamu'; // Ganti dengan nama database proyekmu
+-- 1. Buat database db_toko
+CREATE DATABASE IF NOT EXISTS db_toko;
 
-$conn = new mysqli($host, $username, $password, $database);
+-- 2. Gunakan database tersebut
+USE db_toko;
 
-// Cek koneksi
-if ($conn->connect_error) {
-    die("Koneksi database gagal: " . $conn->connect_error);
-}
+-- 3. Buat tabel produk untuk menyimpan data barang
+CREATE TABLE IF NOT EXISTS produk (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_produk VARCHAR(100) NOT NULL,
+    harga INT NOT NULL,
+    stok INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-// Ambil parameter bulan dan tahun dari URL (jika ada), atau gunakan bulan/tahun saat ini
-$month = isset($_GET['month']) ? $_GET['month'] : date('m');
-$year = isset($_GET['year']) ? $_GET['year'] : date('Y');
+-- 4. Buat tabel user untuk sistem login
+CREATE TABLE IF NOT EXISTS user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
 
-// Query untuk mengambil data rekapitulasi booking
-$query = "SELECT b.id, u.name as pemesan, f.name as fasilitas, b.created_at, b.total_price, b.status 
-          FROM bookings b 
-          LEFT JOIN users u ON b.user_id = u.id 
-          LEFT JOIN facilities f ON b.facility_id = f.id 
-          WHERE MONTH(b.created_at) = '$month' AND YEAR(b.created_at) = '$year'";
-
-$result = $conn->query($query);
-
-// Nama file output untuk unduhan CSV/Excel
-$filename = "laporan-booking-" . $year . "-" . $month . ".csv";
-
-// Set header agar browser langsung mendownload file tersebut sebagai CSV
-header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename="' . $filename . '"');
-
-// Buka output stream file
-$output = fopen('php://output', 'w');
-
-// Tulis baris header kolom ke file CSV
-fputcsv($output, ['ID Booking', 'Nama Pemesan', 'Fasilitas', 'Tanggal Transaksi', 'Total Biaya', 'Status']);
-
-// Masukkan data baris demi baris dari database ke file CSV
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        fputcsv($output, [
-            $row['id'],
-            $row['pemesan'] ?? 'Guest',
-            $row['fasilitas'] ?? 'N/A',
-            $row['created_at'],
-            $row['total_price'],
-            $row['status']
-        ]);
-    }
-} else {
-    // Jika data kosong
-    fputcsv($output, ['Tidak ada data pada periode ini', '', '', '', '', '']);
-}
-
-// Tutup koneksi dan stream
-fclose($output);
-$conn->close();
-exit;
-?>
+-- 5. Masukkan akun admin default (Username: admin, Password: admin123)
+INSERT INTO user (username, password) VALUES ('admin', 'admin123'); 
