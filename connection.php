@@ -1,11 +1,12 @@
 <?php
 $host = "localhost";
-$user = "root"; // sesuaikan
-$pass = "";     // sesuaikan
-$db   = "nama_database_produk"; // TANYAKAN KE MAHASISWA A
+$user = "root";
+$pass = "";
+$db   = "db_toko";
 
-$koneksi = mysqli_connect($host, $user, $pass, $db);
-if (!$koneksi) {
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 ?>
