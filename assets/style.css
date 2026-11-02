@@ -1,0 +1,215 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER & NAVIGASI */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2a5298;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+    background: #f0f4ff;
+}
+
+.nav-links a:hover {
+    background: #2a5298;
+    color: white;
+}
+
+.nav-links a.btn-logout {
+    color: #e74c3c;
+    background: #fee2e2;
+}
+
+.nav-links a.btn-logout:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+/* PESAN SUKSES / FLASH MESSAGE */
+.pesan {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #28a745;
+    font-size: 14px;
+}
+
+/* TABEL */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* TOMBOL AKSI */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-aksi {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: white;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.btn-edit {
+    background-color: #f39c12;
+}
+
+.btn-edit:hover {
+    background-color: #d68910;
+    transform: translateY(-1px);
+}
+
+.btn-hapus {
+    background-color: #e74c3c;
+}
+
+.btn-hapus:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* FORM STYLING (Untuk student_add.php) */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+input[type="text"], select, input[type="date"] {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus, select:focus {
+    border-color: #2a5298;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(42, 82, 152, 0.2);
+    outline: none;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid #dc2626;
+}
+
+.btn-submit {
+    margin-top: 30px;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 1px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+}
